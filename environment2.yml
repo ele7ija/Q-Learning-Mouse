@@ -7,7 +7,6 @@ dependencies:
   - ca-certificates=2019.1.23
   - certifi=2018.11.29
   - freetype=2.9.1
-  - icc_rt
   - intel-openmp=2019.1
   - jinja2=2.10
   - jpeg=9b
@@ -33,10 +32,7 @@ dependencies:
   - sqlite=3.26.0
   - tk=8.6.8
   - tornado=5.1.1
-  - vc
-  - vs2015_runtime
   - wheel=0.33.1
-  - wincertstore
   - xz=5.2.4
   - yaml=0.1.7
   - zlib=1.2.11
