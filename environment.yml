@@ -1,0 +1,44 @@
+name: nb_mouse
+channels:
+  - defaults
+dependencies:
+  - blas=1.0
+  - bokeh=1.0.4
+  - ca-certificates=2019.1.23
+  - certifi=2018.11.29
+  - freetype=2.9.1
+  - icc_rt=2019.0.0
+  - intel-openmp=2019.1
+  - jinja2=2.10
+  - jpeg=9b
+  - libpng=1.6.36
+  - libtiff=4.0.10
+  - markupsafe=1.1.1
+  - mkl=2019.1
+  - mkl_fft=1.0.10
+  - mkl_random=1.0.2
+  - numpy=1.16.2
+  - numpy-base=1.16.2
+  - olefile=0.46
+  - openssl=1.1.1b
+  - packaging=19.0
+  - pillow=5.4.1
+  - pip=19.0.3
+  - pyparsing=2.3.1
+  - python=3.7.2
+  - python-dateutil=2.8.0
+  - pyyaml=3.13
+  - setuptools=40.8.0
+  - six=1.12.0
+  - sqlite=3.26.0
+  - tk=8.6.8
+  - tornado=5.1.1
+  - vc=14.1
+  - vs2015_runtime=14.15.26706
+  - wheel=0.33.1
+  - wincertstore=0.2
+  - xz=5.2.4
+  - yaml=0.1.7
+  - zlib=1.2.11
+  - zstd=1.3.7
+prefix: C:\Users\Bojan\Anaconda3\envs\nb_mouse
