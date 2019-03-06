@@ -130,9 +130,9 @@ class Environment:
         #     self._prev_state._x in range(1, self._size):
         #     return self._manhattan_distance(self._prev_state) * -10.0
 
-        # if (self._curr_state._x, self._curr_state._y) in self.mouses:
+        # if (self._curr_state._x, self._curr_state._y) in self._cats:
         #     return self._manhattan_distance(self._curr_state) * -20.0
-        if (self._curr_state._x, self._curr_state._y) in self.mouses:
+        if (self._curr_state._x, self._curr_state._y) in self._cats:
             return -1000.0
         else:
             return self._manhattan_distance(self._curr_state) * -1.0
@@ -219,8 +219,8 @@ class Environment:
         self._actions['d'] = Action('d')
         self._actions['t'] = Action('t')
 
-    def set_mouses(self, mouses):
-        self.mouses = mouses
+    def set_cats(self, cats):
+        self._cats = cats
 
     def __str__(self):
         return_string = ""
