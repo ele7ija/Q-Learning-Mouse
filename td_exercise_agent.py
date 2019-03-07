@@ -3,7 +3,6 @@
 # Author: Bojan Poprzen
 # File: Temporal difference exercise: Agent
 
-# Agent 
 # Agent should give us the information about:
 #    1) Q-function value
 # ------------------------------------------------------- #
