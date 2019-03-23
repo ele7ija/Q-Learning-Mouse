@@ -1,12 +1,11 @@
-# ------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
 # Date: 22.02.2019.
 # Author: Bojan Poprzen
 # File: Temporal difference exercise: Environment model
 
 # Environment should give us the information about:
-#    1) What are all the possible states and state->state transitions
-#    2) Rewards for the state->state transition
-# ------------------------------------------------------- #
+#    - p(s', r | s, a) probability function of transitioning from s -> s' 
+# --------------------------------------------------------------------------- #
 
 class State:
     """
@@ -79,9 +78,9 @@ class Environment:
             action: Action object which has been previously chosen by the algorithm
         
         Returns:
-            next_state: 
-            reward:
-            done:
+            next_state: [State] 
+            reward:     [double] How good was THIS concrete move?
+            done:       [boolean] Whether the mouse has found the cheese or not
         """
         self._prev_state = self._curr_state
 
@@ -104,7 +103,15 @@ class Environment:
         return self.states
 
     def _manhattan_distance(self, state):
-        """Calculates the manhattan distance to the terminal field"""
+        """ * MISTAKE *
+        Calculates the manhattan distance to the terminal field.
+        This function had mistakenly been used in order to calculate rewards
+        given to the agent WHILE CONSIDERING his distance from the terminal
+        field. [As defined in Sutton's book] This is a bad practice as the
+        environment should not tell the agent how to BEHAVE, but which
+        transitions are good and which are not; Considering that information,
+        agent learns how to behave on his own (through prediction and control) 
+        """
         return (self._size_x - state._x) + (self._size_y - state._y)
 
     def _get_reward(self):
@@ -112,44 +119,28 @@ class Environment:
         This function provides the reward for transitioning from 
         self._prev_state to self._curr_state
         """
+        # The mouse has found the cheese
         if self._curr_state.get_terminal():
             return 800
 
-        # if state1._x == 1 and state1._y == 2:
-        #     return self._manhattan_distance(state1) * -10.0
-        # elif state1._x == 2 and state1._y == 2:
-        #     return self._manhattan_distance(state1) * -10.0
-        # elif state1._x == 3 and state1._y == 2:
-        #     return self._manhattan_distance(state1) * -10.0
-        # elif state1._x == 4 and state1._y == 2:
-        #     return self._manhattan_distance(state1) * -10.0
-        # elif state1._x == 5 and state1._y == 2:
-        #     return self._manhattan_distance(state1) * -10.0
-
-        # if self._prev_state._y == 2 and \
-        #     self._prev_state._x in range(1, self._size):
-        #     return self._manhattan_distance(self._prev_state) * -10.0
-
-        # if (self._curr_state._x, self._curr_state._y) in self._cats:
-        #     return self._manhattan_distance(self._curr_state) * -20.0
+        # The mouse has encountered a cat
         if (self._curr_state._x, self._curr_state._y) in self._cats:
             return -1000.0
+        # The mouse has neither encoutered a cat nor found the cheese
         else:
-            return self._manhattan_distance(self._curr_state) * -1.0
-
-        # if self._curr_state._y == 2 and \
-        #     self._curr_state._x in range(1, self._size_x):
-        #     return self._manhattan_distance(self._curr_state) * -20.0
-        # else:
-        #     return self._manhattan_distance(self._curr_state) * -1.0
-
-        # return self._manhattan_distance(self._curr_state) * -1.0
+            # *MISTAKE* return self._manhattan_distance(self._curr_state)*-1.0
+            # The reward is negative in order to motivate the mouse to find the
+            # shortest path
+            return -5
         
 
     def get_possible_actions(self, state):
         """
-        This function returns 2, 3 or 4 of the possible actions to be done at a
-        state
+        Returns 2, 3 or 4 of the possible actions to be done at a state 'state'
+        Args:
+            state:
+        Returns:
+            possible_actions: [list] list of possible actions to choose from
         """
         x = state._x
         y = state._y

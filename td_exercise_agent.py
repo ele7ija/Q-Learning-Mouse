@@ -47,10 +47,13 @@ class Agent:
 def make_epsilon_greedy_policy(Q, epsilon):
     """
     Creates an epsilon-greedy policy based on a given Q-function and epsilon.
+    A policy is the one that dictates whether an agent will EXPLOIT or EXPLORE
+    the current knowledge given by the Q-function. 
     
     Args:
-        Q: A dictionary that maps from state -> actions -> state-action-values.
-        epsilon: The probability to select a random action . float between 0 and 1.
+        Q:          A dictionary that maps from state -> actions -> state-action-values.
+        epsilon:    [float between 0 and 1]
+                    The probability to select a random action. (to explore)
     
     Returns:
         A function that takes the observation as an argument and returns
@@ -87,6 +90,15 @@ def get_random_action(action_probs):
 
 
 def q_learning(env, num_episodes=500, epsilon=0.1, discount_factor=0.8, alpha=0.5):
+    '''
+    Args:
+        env:
+        num_episodes:
+        epsilon:    Chance of choosing a random action (exploration factor)
+        discount_factor: A bias towards the time of receiving the reward =>
+            A reward R_1 will be weighted (1-d_f)^n-1, while a recent reward
+            R_n-1 will be weighted (1-d_f)
+    '''
     a = Agent(env)
     a.init_q_values()
 
