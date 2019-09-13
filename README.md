@@ -1,5 +1,5 @@
 # Q-Learning Mouse
-More informations about this project can be found in the [*td_exercise_gui.ipynb*](td_exercise_gui.ipynb) <sup>1</sup> jupyter notebook.
+More info about this project can be found in the [*td_exercise_gui.ipynb*](td_exercise_gui.ipynb) <sup>1</sup> jupyter notebook.
 
 ## Running the project in cloud
 To run the project in cloud (powered by [mybinder.org](https://mybinder.org)<sup>2</sup>) click [here](https://mybinder.org/v2/gh/ele7ija/Q-Learning-Mouse/master). After you click, wait a few moments for your server to start.
